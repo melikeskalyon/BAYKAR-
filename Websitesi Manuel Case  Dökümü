@@ -1,0 +1,46 @@
+Test Senaryosu 1: Baykar Kariyer Websitesi Kullanılabilirliği Ve İçerik Doğrulaması
+
+ Testin Adımları:
+  *Baykar Kariyer websitesini görüntüle.
+  *Menüde yer alan butonlara tıkla.
+  *Menüdeki butonların hatasız çalıştığını kontrol et.
+  *Yönlendirilen sayfalardaki içeriklerin butonlarla ilgili olduğunu doğrula.
+ Beklenen Sonuçlar:
+  *Ziyaretçi ilgili websitesindeki menüde yer alan butonlara tıklayabilmekte ve yönlendirilen 
+sayfalarda doğru içeriklerle karşılaşabilmekte.
+
+Test Case 1: Kariyer Menüsü Kullanılabilirliği ve İçerik Doğrulaması
+
+ Testin Adımları:
+  *Baykar Kariyer websitesini görüntüle.
+  *"Kariyer" butonunun çalıştığını doğrula.
+ Beklenen Sonuçlar:
+  *"kariyer" butonuna tıklandı ve sayfa yönlendirmesi başarıyla gerçekleşti.
+
+Test Case 2: Pozisyon Arama Menüsünün Tıklanabilirliği ve İçerik Doğrulaması
+
+ Testin Adımları:
+  *Arama butonuna içerik girilmesi.
+  *İçerik girildikten sonra "Pozisyonlar" sayfasında yer alan açık pozisyonların görüntülenebilmesi.
+ Beklenen Sonuçlar:
+  *Arama butonuna içerik girildikten sonra yönlendirilen sayfada açık pozisyonlar başarıyla görüntülendi.
+
+Test Case 3: Websitesi Dil Seçenekleri Tıklanabilirliği ve İçerik Doğrulaması
+
+  Testin Adımları:
+   *TR ya da EN butonuna tıklanabilirliği doğrula.
+   *Dil seçeneklerinin içerikte doğru olduğundan emin ol.
+  Beklenen Sonuçlar:
+   *Websitesi dil seçeneklerinden EN ya da TR butonuna tıklanılabilirliği doğrula.
+   *İlgili butona tıklandığında websitesi içeriğinin seçilen dil butonunda olduğunu kontrol et.
+
+Test Case 4: Websitesi Ön Değerlendirme Butonu Tıklanabilirliği ve İçerik Doğrulaması
+
+  Testin Adımları:
+   *"Ön değerlendirme" butonunun tıklanabilirliğini doğrula.
+   *İlgili butona tıklandığında ön değerlendirmeler gözükmeli.
+   *Ön değerlendirme alanında yer alan hareketler kolonu altındaki saat iconuna tıklandığında başvuru 
+ hareketleri pop-up'ı açılmalı.
+  Beklenen Sonuç:
+   *"Ön değerlendirme butonununa tıklandığında öndeğerlendirmeler gözükmeli ve hareketler kolonu altındaki
+saat iconuna tıklandığında başvuru hareketleri pop-up'ı açılmalı.
