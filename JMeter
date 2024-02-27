@@ -1,0 +1,31 @@
+Thread Group Ekleme:
+
+Test planında sağ tıkla
+Ekle > Thread Group > Thread Group seçeneğini seç
+Thread Group adını "Test: Yeni Kullanıcı Oluşturma" olarak belirt
+Kullanıcı Sayısı ve Süre değerlerini düzenle
+
+HTTP İsteği Ekleme:
+Thread Group seç
+Ekle > Örnek > HTTP İsteği seçeneğini seç
+Sunucu Adı veya IP'si alanına "kariyer.baykartech.com" yaz
+Port Numarası alanına "443" yaz
+Protokol alanını "https" olarak belirle
+Yol alanına "/tr/hesaplar/signup/" yaz
+İsteği POST olarak ayarla
+
+HTTP İsteği Detayları:
+Parametreler sekmesine geç
+Yeni kullanıcı oluşturmak için gerekli alanları ekle (e-posta, şifre, kullanıcı)
+
+Thread Group (İş Grubu) Ayarları:
+Thread Group'u seç
+Kullanıcı Sayısı ve Artış Süresi gibi iş değişkenlerini belirle
+
+Sonuçları Görüntüleme:
+Thread Group'u seç
+Ekle > Dinleyiciler (Listeners) > Grafik Rapor seçeneğini seç
+
+Testi Çalıştırma:
+Test planına sağ tıkla
+Testi Başlat seçeneğini seç
