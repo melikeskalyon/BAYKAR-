@@ -1,0 +1,128 @@
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // 1. Senaryo: Baykar Kariyer web sitesinde gezinme
+        TestBaykarKariyerGezinme();
+
+        // 2. Senaryo: Baykartech web sitesinde dil seçeneklerinin kontrolü
+        TestBaykartechDilSecenekleri();
+
+        // 3. Senaryo: Baykartech kariyer web sitesinde aç?k pozisyon arama
+        TestBaykartechPozisyonArama();
+    }
+
+    static void TestBaykarKariyerGezinme()
+    {
+        // ChromeDriver'? ba?lat
+        IWebDriver driver = new ChromeDriver();
+
+        // Baykar Kariyer web sitesini ziyaret et
+        driver.Navigate().GoToUrl("https://kariyer.baykartech.com/");
+
+        // Navbar elementlerini bul
+        IWebElement[] navbarElements = driver.FindElements(By.CssSelector(".navbar-nav li")).ToArray();
+
+        // Her navbar elementine t?kla ve sayfalar? kontrol et
+        foreach (IWebElement navbarElement in navbarElements)
+        {
+            navbarElement.Click();
+
+            // Sayfan?n yüklendi?ini do?rula
+            if (driver.Url != "https://kariyer.baykartech.com/")
+            {
+                Console.WriteLine("Sayfa yüklendi: " + driver.Url);
+            }
+            else
+            {
+                Console.WriteLine("Sayfa yüklenemedi: " + driver.Url);
+            }
+
+            // Ana sayfaya geri dön
+            driver.Navigate().GoToUrl("https://kariyer.baykartech.com/");
+        }
+
+        // WebDriver'? kapat
+        driver.Quit();
+    }
+
+    static void TestBaykartechDilSecenekleri()
+    {
+        // WebDriver'? ba?lat
+        IWebDriver driver = new ChromeDriver();
+
+        // Baykartech web sitesini ziyaret et
+        driver.Navigate().GoToUrl("https://www.baykartech.com/");
+
+        // Desteklenen dillerin listesi
+        List<string> supportedLanguages = new List<string> { "en", "tr", "fr", "es" };
+
+        // Her bir dil için kontrol et
+        foreach (string language in supportedLanguages)
+        {
+            // Dil de?i?tirme i?lemi
+            driver.FindElement(By.CssSelector("#language-selector")).Click(); // Dil seçiciyi t?kla
+            driver.FindElement(By.CssSelector($"[data-lang='{language}']")).Click(); // Belirli dili seç
+
+            // Ana sayfada dilin do?ru ?ekilde gösterilip gösterilmedi?ini kontrol et
+            string pageLanguage = driver.FindElement(By.TagName("html")).GetAttribute("lang");
+            if (pageLanguage == language)
+            {
+                Console.WriteLine($"Dil ba?ar?yla de?i?tirildi: {language}");
+            }
+            else
+            {
+                Console.WriteLine($"Hata: Dil de?i?tirilemedi veya yanl?? dil gösteriliyor: {language}");
+            }
+
+            // Bir süre bekleyin
+            System.Threading.Thread.Sleep(1000);
+        }
+
+        // WebDriver'? kapat
+        driver.Quit();
+    }
+
+    static void TestBaykartechPozisyonArama()
+    {
+        // ChromeDriver'? ba?lat
+        IWebDriver driver = new ChromeDriver();
+
+        // Baykartech kariyer web sitesini ziyaret et
+        driver.Navigate().GoToUrl("https://kariyer.baykartech.com/");
+
+        // Aç?k pozisyonlar? saklamak için bir liste olu?tur
+        List<string> positions = new List<string>();
+
+        // Aç?k pozisyonlar? bul
+        IList<IWebElement> positionElements = driver.FindElements(By.CssSelector(".i? h2"));
+
+        // Pozisyon ba?l?klar?n? listeye ekle
+        foreach (IWebElement positionElement in positionElements)
+        {
+            positions.Add(positionElement.Text);
+        }
+
+        // Verilen input
+        string input = "Yaz?l?m Mühendisi";
+
+        // Filtreleme i?lemi
+        Console.WriteLine($"\"{input}\" pozisyonu için sonuçlar:");
+        foreach (string position in positions)
+        {
+            if (position.Contains(input))
+            {
+                Console.WriteLine(position);
+            }
+        }
+
+        // WebDriver'? kapat
+        driver.Quit();
+    }
+}
