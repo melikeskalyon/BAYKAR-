@@ -1,0 +1,18 @@
+using System.Threading.Tasks;
+
+from locust import HttpUser, task, between
+
+class BaykarKariyerUser(HttpUser) :
+    wait_time = between(5, 9)
+
+    @task
+    def get_homepage(self):
+        self.client.get("https://kariyer.baykartech.com/")
+
+    @task
+    def view_open_positions(self):
+        self.client.get("https://kariyer.baykartech.com/tr/basvuru/acik-pozisyonlar")
+
+    @task
+    def register_user(self):
+        self.client.get("https://kariyer.baykartech.com/tr/hesaplar/signup/")
